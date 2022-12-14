@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets" />
+  <ItemGroup>
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../AngryWasp.Helpers/AngryWasp.Helpers.csproj" />
+  </ItemGroup>
+</Project>
