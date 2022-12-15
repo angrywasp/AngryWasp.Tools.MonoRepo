@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Numerics;
 
 namespace AngryWasp.Helpers
 {
@@ -107,6 +109,39 @@ namespace AngryWasp.Helpers
                 (byte)(num >> 48),
                 (byte)(num >> 56),
             };
+        }
+
+        public static byte[] ToByte(this Vector2 value)
+        {
+            byte[] returnValue = new byte[8];
+
+            Buffer.BlockCopy(ToByte(value.X), 0, returnValue, 0, 4);
+            Buffer.BlockCopy(ToByte(value.Y), 0, returnValue, 4, 4);
+
+            return returnValue;
+        }
+
+        public static byte[] ToByte(this Vector3 value)
+        {
+            byte[] returnValue = new byte[12];
+
+            Buffer.BlockCopy(ToByte(value.X), 0, returnValue, 0, 4);
+            Buffer.BlockCopy(ToByte(value.Y), 0, returnValue, 4, 4);
+            Buffer.BlockCopy(ToByte(value.Z), 0, returnValue, 8, 4);
+
+            return returnValue;
+        }
+
+        public static byte[] ToByte(this Vector4 value)
+        {
+            byte[] returnValue = new byte[16];
+
+            Buffer.BlockCopy(ToByte(value.X), 0, returnValue, 0, 4);
+            Buffer.BlockCopy(ToByte(value.Y), 0, returnValue, 4, 4);
+            Buffer.BlockCopy(ToByte(value.Z), 0, returnValue, 8, 4);
+            Buffer.BlockCopy(ToByte(value.W), 0, returnValue, 12, 4);
+
+            return returnValue;
         }
 
         #endregion
@@ -323,6 +358,63 @@ namespace AngryWasp.Helpers
             uint num2 = (uint)(value[start++] | value[start++] << 8 | value[start++] << 16 | value[start++] << 24);
             ulong num3 = (ulong)num2 << 32 | num;
             return *(double*)(&num3);
+        }
+
+        public static Vector2 ToVector2(this byte[] value)
+        {
+            int start = 0;
+            float x = ToFloat(value, ref start);
+            float y = ToFloat(value, ref start);
+
+            return new Vector2(x, y);
+        }
+
+        public static Vector2 ToVector2(this byte[] value, ref int start)
+        {
+            float x = ToFloat(value, ref start);
+            float y = ToFloat(value, ref start);
+
+            return new Vector2(x, y);
+        }
+
+        public static Vector3 ToVector3(this byte[] value)
+        {
+            int start = 0;
+            float x = ToFloat(value, ref start);
+            float y = ToFloat(value, ref start);
+            float z = ToFloat(value, ref start);
+
+            return new Vector3(x, y, z);
+        }
+
+        public static Vector3 ToVector3(this byte[] value, ref int start)
+        {
+            float x = ToFloat(value, ref start);
+            float y = ToFloat(value, ref start);
+            float z = ToFloat(value, ref start);
+
+            return new Vector3(x, y, z);
+        }
+
+        public static Vector4 ToVector4(this byte[] value)
+        {
+            int start = 0;
+            float x = ToFloat(value, ref start);
+            float y = ToFloat(value, ref start);
+            float z = ToFloat(value, ref start);
+            float w = ToFloat(value, ref start);
+
+            return new Vector4(x, y, z, w);
+        }
+
+        public static Vector4 ToVector4(this byte[] value, ref int start)
+        {
+            float x = ToFloat(value, ref start);
+            float y = ToFloat(value, ref start);
+            float z = ToFloat(value, ref start);
+            float w = ToFloat(value, ref start);
+
+            return new Vector4(x, y, z, w);
         }
 
         #endregion
