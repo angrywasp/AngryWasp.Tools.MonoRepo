@@ -18,9 +18,9 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <GenerateFullPaths>true</GenerateFullPaths>
         <TrimUnusedDependencies>true</TrimUnusedDependencies>
-        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
-        <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
-        <OutputPath>$(SolutionDir)Bin/$(Configuration)</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+        <OutputPath>$(SolutionDir)../Bin/Binaries</OutputPath>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -31,7 +31,7 @@
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
         <DebugSymbols>false</DebugSymbols>
-	<DebugType>none</DebugType>
+        <DebugType>none</DebugType>
         <Optimize>true</Optimize>
         <Obfuscate>true</Obfuscate>
         <DefineConstants>$(DefineConstants);OPENGL;OPENAL;DESKTOPGL;SUPPORTS_EFX;UNSAFE;</DefineConstants>

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets" />
-  <ItemGroup>
-    <ProjectReference Include="../AngryWasp.Logger/AngryWasp.Logger.csproj" />
-    <ProjectReference Include="../AngryWasp.Helpers/AngryWasp.Helpers.csproj" />
-  </ItemGroup>
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets" />
+    <ItemGroup>
+        <ProjectReference Include="../AngryWasp.Logger/AngryWasp.Logger.csproj" />
+        <ProjectReference Include="../AngryWasp.Helpers/AngryWasp.Helpers.csproj" />
+    </ItemGroup>
 </Project>
