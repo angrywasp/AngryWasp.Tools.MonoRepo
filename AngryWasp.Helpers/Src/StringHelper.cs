@@ -407,6 +407,12 @@ namespace AngryWasp.Helpers
             catch { return string.Empty; }
         }
 
+        public static string ToPrefixedHex(this byte[] hex) => $"0x{hex.ToHex()}";
+
+        public static string ToPrefixedHex(this string hex) => $"{(hex.StartsWith("0x") ? hex : "0x" + hex)}";
+
+        public static string TrimHexPrefix(this string hex) => (hex.StartsWith("0x") ? hex.Substring(2) : hex);
+
         #endregion
     }
 }

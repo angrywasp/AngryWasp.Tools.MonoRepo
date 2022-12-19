@@ -15,7 +15,7 @@ namespace AngryWasp.Cryptography
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            EthAddress hk = TrimPrefix(((string)reader.Value)).FromByteHex();
+            EthAddress hk = ((string)reader.Value).TrimHexPrefix().FromByteHex();
             return hk;
         }
 
@@ -24,8 +24,6 @@ namespace AngryWasp.Cryptography
             EthAddress hk = (EthAddress)value;
             writer.WriteValue(hk.ToString());
         }
-
-        private static string TrimPrefix(string hex) => (hex.StartsWith("0x") ? hex.Substring(2) : hex);
     }
 
     [JsonConverter(typeof(EthAddressJsonConverter))]
@@ -117,7 +115,7 @@ namespace AngryWasp.Cryptography
 
             try
             {
-                output = new EthAddress(TrimPrefix(input).FromByteHex());
+                output = new EthAddress(input.TrimHexPrefix().FromByteHex());
                 return true;
             }
             catch { return false; }
@@ -143,14 +141,14 @@ namespace AngryWasp.Cryptography
 
         public static implicit operator EthAddress(List<byte> value) => new EthAddress(value.ToArray());
 
-        public static implicit operator EthAddress(string hex) => new EthAddress(TrimPrefix(hex).FromByteHex());
+        public static implicit operator EthAddress(string hex) => new EthAddress(hex.TrimHexPrefix().FromByteHex());
         public static implicit operator string(EthAddress value) => value.ToString();
 
         public override string ToString() => addressUtil.ConvertToChecksumAddress(this.value.ToHex());
 
         public byte[] ToByte() => value;
 
-        public string ToLower() => ToHexString(value).ToLower();
+        public string ToLower() => value.ToPrefixedHex();
 
         public int CompareTo(EthAddress other)
         {
@@ -165,9 +163,5 @@ namespace AngryWasp.Cryptography
 
             return 0;
         }
-
-        private string ToHexString(byte[] hex) => $"0x{hex.ToHex()}";
-
-        private static string TrimPrefix(string hex) => (hex.StartsWith("0x") ? hex.Substring(2) : hex);
     }
 }

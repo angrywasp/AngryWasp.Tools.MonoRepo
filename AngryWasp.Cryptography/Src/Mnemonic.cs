@@ -10,7 +10,7 @@ namespace AngryWasp.Cryptography
         public Mnemonic(Wordlist wordList = null)
         {
             if (wordList == null)
-                this.wordList = NBitcoin.Wordlist.English;
+                this.wordList = Wordlist.English;
             else
                 this.wordList = wordList;
         }
