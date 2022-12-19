@@ -12,6 +12,7 @@ namespace AngryWasp.Helpers
 {
     public static class StringHelper
     {
+        private static readonly XoShiRo128PlusPlus rng = new XoShiRo128PlusPlus();
         /// <summary>
         /// Splits parameters from a string in the format {a:0 b:1}
         /// </summary>
@@ -202,7 +203,7 @@ namespace AngryWasp.Helpers
             string str = string.Empty;
 
             for (int i = 0; i < length; i++)
-                str += chars[MathHelper.Random.NextInt(0, chars.Length)];
+                str += chars[rng.Next(0, chars.Length)];
 
             return str;
         }
@@ -214,7 +215,7 @@ namespace AngryWasp.Helpers
             string str = string.Empty;
 
             for (int i = 0; i < length; i++)
-                str += chars[MathHelper.Random.NextInt(0, chars.Length)];
+                str += chars[rng.Next(0, chars.Length)];
 
             return str;
         }
@@ -242,7 +243,7 @@ namespace AngryWasp.Helpers
             var saltStringBytes = GenerateEntropy();
             var ivStringBytes = GenerateEntropy();
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-            using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations))
+            using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations, HashAlgorithmName.SHA512))
             {
                 var keyBytes = password.GetBytes(Keysize / 8);
                 using (var symmetricKey = System.Security.Cryptography.Aes.Create())
@@ -278,7 +279,7 @@ namespace AngryWasp.Helpers
             var ivStringBytes = cipherTextBytesWithSaltAndIv.Skip(Keysize / 8).Take(Keysize / 8).ToArray();
             var cipherTextBytes = cipherTextBytesWithSaltAndIv.Skip((Keysize / 8) * 2).Take(cipherTextBytesWithSaltAndIv.Length - ((Keysize / 8) * 2)).ToArray();
 
-            using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations))
+            using (var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations, HashAlgorithmName.SHA512))
             {
                 var keyBytes = password.GetBytes(Keysize / 8);
                 using (var symmetricKey = System.Security.Cryptography.Aes.Create())

@@ -9,6 +9,7 @@ namespace AngryWasp.Net
 {
     public static class ConnectionManager
     {
+        private static readonly XoShiRo128PlusPlus rng = new XoShiRo128PlusPlus();
         private static ThreadSafeDictionary<ConnectionId, Connection> connections = new ThreadSafeDictionary<ConnectionId, Connection>();
 
         public delegate void ConnectionEventHandler(Connection connection);
@@ -112,7 +113,7 @@ namespace AngryWasp.Net
             if (connectionList.Count == 0)
                 return null;
 
-            int index = MathHelper.Random.NextInt(0, connectionList.Count);
+            int index = rng.Next(0, connectionList.Count);
             return connectionList[index];
         }
     }

@@ -27,7 +27,7 @@ namespace AngryWasp.Net
         public const int READ_BUFFER_SIZE = ushort.MaxValue;
         public const int FAILURES_BEFORE_BAN = 3;
 
-        private static byte netId;
+        private static byte netId = 0;
         private static List<Node> seedNodes = new List<Node>();
 
         public static byte NetId => netId;

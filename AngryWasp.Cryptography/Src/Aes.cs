@@ -14,7 +14,7 @@ namespace AngryWasp.Cryptography
             var saltStringBytes = Helper.GenerateSecureBytes(16);
             var ivStringBytes = Helper.GenerateSecureBytes(16);
 
-            using (var password = new Rfc2898DeriveBytes(key, saltStringBytes, derivationIterations))
+            using (var password = new Rfc2898DeriveBytes(key, saltStringBytes, derivationIterations, HashAlgorithmName.SHA512))
             {
                 var keyBytes = password.GetBytes(keySize / 8);
                 using (var symmetricKey = System.Security.Cryptography.Aes.Create())
@@ -52,7 +52,7 @@ namespace AngryWasp.Cryptography
                 var ivStringBytes = input.Skip(keySize / 8).Take(keySize / 8).ToArray();
                 var cipherTextBytes = input.Skip((keySize / 8) * 2).Take(input.Length - ((keySize / 8) * 2)).ToArray();
 
-                using (var password = new Rfc2898DeriveBytes(key, saltStringBytes, derivationIterations))
+                using (var password = new Rfc2898DeriveBytes(key, saltStringBytes, derivationIterations, HashAlgorithmName.SHA512))
                 {
                     var keyBytes = password.GetBytes(keySize / 8);
                     using (var symmetricKey = System.Security.Cryptography.Aes.Create())
