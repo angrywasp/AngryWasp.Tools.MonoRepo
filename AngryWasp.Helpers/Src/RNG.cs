@@ -42,16 +42,22 @@ namespace AngryWasp.Helpers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public int Next(int minValue, int maxValue) => (int)(this.Next() / ((float)uint.MaxValue / (maxValue - minValue)) + minValue);
+        public int Next(int minValue, int maxValue) => (int)(Next() / ((float)uint.MaxValue / (maxValue - minValue)) + minValue);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public float NextFloat() => (float)this.Next() / uint.MaxValue;
+        public float NextFloat() => (float)Next() / uint.MaxValue;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public float NextFloat(float min, float max) => (float)((max - min) * NextFloat() + min);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public byte NextByte() => (byte)Next(0, 255);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void NextBytes(byte[] buffer)
         {
             for (int idx = 0; idx < buffer.Length; idx++)
-                buffer[idx] = (byte)(this.Next() / (uint.MaxValue / byte.MaxValue));
+                buffer[idx] = (byte)(Next() / (uint.MaxValue / byte.MaxValue));
         }
     }
 
@@ -115,16 +121,22 @@ namespace AngryWasp.Helpers
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public long Next(long minValue, long maxValue) => (long)(this.Next() / ((double)ulong.MaxValue / (maxValue - minValue)) + minValue);
+        public long Next(long minValue, long maxValue) => (long)(Next() / ((double)ulong.MaxValue / (maxValue - minValue)) + minValue);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public double NextDouble() => (double)this.Next() / ulong.MaxValue;
+        public double NextDouble() => (double)Next() / ulong.MaxValue;
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public double NextDouble(double min, double max) => (double)((max - min) * NextDouble() + min);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public byte NextByte() => (byte)Next(0, 255);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void NextBytes(byte[] buffer)
         {
             for (int idx = 0; idx < buffer.Length; idx++)
-                buffer[idx] = (byte)(this.Next() / (ulong.MaxValue / byte.MaxValue));
+                buffer[idx] = (byte)(Next() / (ulong.MaxValue / byte.MaxValue));
         }
     }
 

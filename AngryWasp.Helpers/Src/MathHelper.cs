@@ -181,8 +181,10 @@ namespace AngryWasp.Helpers
             return fWeight;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float DegreesToRadians(float deg) => deg * ToRadCoefficient;
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float RadiansToDegrees(float rad) => rad * ToDegCoefficient;
 
         /// <summary>
@@ -191,20 +193,16 @@ namespace AngryWasp.Helpers
         /// <param name="value">the value to test</param>
         /// <param name="thresh">the threshold to test it against</param>
         /// <returns>0 if value is less that theshold, otherwise value</returns>
-        public static float Threshold(float value, float thresh)
-        {
-            return value < thresh ? 0 : value;
-        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static float Threshold(float value, float thresh) => value < thresh ? 0 : value;
 
         /// <summary>
         /// Determines if value is powered by two.
         /// </summary>
         /// <param name="value">A value.</param>
         /// <returns><c>true</c> if <c>value</c> is powered by two; otherwise <c>false</c>.</returns>
-        public static bool IsPowerOfTwo(int value)
-        {
-            return (value > 0) && ((value & (value - 1)) == 0);
-        }
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static bool IsPowerOfTwo(int value) => (value > 0) && ((value & (value - 1)) == 0);
 
         /// <summary>
         /// Returns the Cartesian coordinate for one axis of a point that is defined by a given triangle and two normalized barycentric (areal) coordinates.
@@ -215,6 +213,7 @@ namespace AngryWasp.Helpers
         /// <param name="amount1">The normalized barycentric (areal) coordinate b2, equal to the weighting factor for vertex 2, the coordinate of which is specified in value2.</param>
         /// <param name="amount2">The normalized barycentric (areal) coordinate b3, equal to the weighting factor for vertex 3, the coordinate of which is specified in value3.</param>
         /// <returns>Cartesian coordinate of the specified point with respect to the axis being used.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Barycentric(float value1, float value2, float value3, float amount1, float amount2) => value1 + (value2 - value1) * amount1 + (value3 - value1) * amount2;
 
         /// <summary>
@@ -244,6 +243,7 @@ namespace AngryWasp.Helpers
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>Distance between the two values.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Distance(float value1, float value2) => Math.Abs(value1 - value2);
 
         /// <summary>
@@ -326,6 +326,7 @@ namespace AngryWasp.Helpers
 
         #region Magnitude
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Magnitude(Vector2 v)
         {
             return MathF.Sqrt(
@@ -333,6 +334,7 @@ namespace AngryWasp.Helpers
                 (v.Y * v.Y));
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float Magnitude(Vector3 v)
         {
             return MathF.Sqrt(
@@ -405,6 +407,7 @@ namespace AngryWasp.Helpers
             return points;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int NextPowerOfTwo(int value) => (int)MathF.Pow(2, MathF.Floor(MathF.Log(value, 2)) + 1);
 
         public static Vector2 Rotate(Vector2 point, float radians, Vector2 pivot)
@@ -538,30 +541,6 @@ namespace AngryWasp.Helpers
             result.Z = cosYawOver2 * sinPitchOver2 * cosRollOver2 + sinYawOver2 * cosPitchOver2 * sinRollOver2;
             result.W = sinYawOver2 * cosPitchOver2 * cosRollOver2 - cosYawOver2 * sinPitchOver2 * sinRollOver2;
             return result;
-        }
-
-        /// <summary>
-        /// Class for generating random data types
-        /// </summary>
-        public static class Random
-        {
-            //private static MersenneTwister r = new MersenneTwister();
-            private static XoShiRo128PlusPlus r = new XoShiRo128PlusPlus();
-
-            public static void Reset()
-            {
-                r = new XoShiRo128PlusPlus();
-            }
-
-            // Generates a random float value in the range 0.0 - 1.0
-            public static float NextFloat() => r.NextFloat();
-
-            public static float NextFloat(float min, float max) => (float)((max - min) * r.NextFloat() + min);
-
-            // Generates a random byte in the range 0 - 255
-            public static byte NextByte() => (byte)NextInt(0, 255);
-
-            public static int NextInt(int min, int max) => r.Next(min, max);
         }
     }
 }
