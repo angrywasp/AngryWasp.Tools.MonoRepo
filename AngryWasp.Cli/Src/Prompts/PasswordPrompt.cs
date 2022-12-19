@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Common.CliPrompts
+namespace AngryWasp.Cli.Prompts
 {
     public class PasswordPrompt
     {

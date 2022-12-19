@@ -1,8 +1,7 @@
-using AngryWasp.Cli;
 using System;
 using System.Collections.Generic;
 
-namespace Common.CliPrompts
+namespace AngryWasp.Cli.Prompts
 {
     public static class InputPrompt
     {
