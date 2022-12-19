@@ -37,7 +37,7 @@ namespace AngryWasp.Net
 
             if (removed)
             {
-                Log.Instance.WriteInfo($"Connection removed - {c.PeerId}: {reason}");
+                Log.Instance.WriteInfo($"Connection removed - {c.PeerId}: {reason ?? "No reason"}");
                 foreach (var r in c.FailureReasons)
                     Log.Instance.WriteInfo(r);
 
