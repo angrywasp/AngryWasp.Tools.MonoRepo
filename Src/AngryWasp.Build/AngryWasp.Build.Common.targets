@@ -12,13 +12,14 @@
         <DefineConstants>$(DefineConstants);WINDOWS;</DefineConstants>
     </PropertyGroup>
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFrameworks>netstandard2.1;net6.0;net7.0</TargetFrameworks>
         <PlatformTarget>AnyCPU</PlatformTarget>
         <LangVersion>latest</LangVersion>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <GenerateFullPaths>true</GenerateFullPaths>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <TrimUnusedDependencies>true</TrimUnusedDependencies>
-        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
         <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
         <OutputPath>$(SolutionDir)../Bin/Binaries</OutputPath>
         <LangVersion>latest</LangVersion>

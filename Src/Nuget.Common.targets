@@ -1,0 +1,7 @@
+<Project>
+    <PropertyGroup>
+        <PackageVersion>3.0.0</PackageVersion>
+        <RepositoryUrl>https://github.com/angrywasp/AngryWasp.Tools.MonoRepo</RepositoryUrl>
+        <Author>Angry Wasp</Author>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets" />
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Pack.targets"/>
+    <Import Project="../Nuget.Common.targets"/>
+    <PropertyGroup>
+        <PackageId>AngryWasp.Json.Rpc</PackageId>
+        <PackageDescription>Library for building RPC communications</PackageDescription>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="*" />
+        <PackageReference Include="AngryWasp.Logger" Version="*"/>
+        <PackageReference Include="AngryWasp.Helpers" Version="*"/>
+    </ItemGroup>
+</Project>

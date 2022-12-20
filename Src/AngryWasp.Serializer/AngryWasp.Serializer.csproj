@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets" />
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Pack.targets"/>
+    <Import Project="../Nuget.Common.targets"/>
+    <PropertyGroup>
+        <PackageId>AngryWasp.Serializer</PackageId>
+        <PackageDescription>XML serialization library</PackageDescription>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="AngryWasp.Helpers" Version="*"/>
+    </ItemGroup>
+</Project>

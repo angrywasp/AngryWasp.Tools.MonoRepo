@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets"/>
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Pack.targets"/>
+    <Import Project="../Nuget.Common.targets"/>
+    <PropertyGroup>
+        <PackageId>AngryWasp.Cli</PackageId>
+        <PackageDescription>Easily create CLI based applications</PackageDescription>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="AngryWasp.Logger" Version="*"/>
+        <PackageReference Include="AngryWasp.Helpers" Version="*"/>
+    </ItemGroup>
+</Project>

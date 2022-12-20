@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets"/>
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Pack.targets"/>
+    <Import Project="../Nuget.Common.targets"/>
+    <PropertyGroup>
+        <PackageId>AngryWasp.Cryptography</PackageId>
+        <PackageDescription>Various cryptography helper classes</PackageDescription>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Portable.BouncyCastle" Version="*"/>
+        <PackageReference Include="Newtonsoft.Json" Version="*"/>
+        <PackageReference Include="Nethereum.Util" Version="*"/>
+        <PackageReference Include="NBitcoin" Version="*"/>
+        <PackageReference Include="Nethereum.Signer" Version="*"/>
+        <PackageReference Include="AngryWasp.Helpers" Version="*"/>
+    </ItemGroup>
+</Project>
