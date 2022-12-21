@@ -53,13 +53,13 @@ namespace AngryWasp.Helpers
             finally { s.Release(); }
         }
 
-        public async Task<List<V>> GetValues()
+        public async Task<HashSet<V>> CopyToHashSet()
         {
             await s.WaitAsync().ConfigureAwait(false);
 
             try
             {
-                return new List<V>(list.ToArray());
+                return new HashSet<V>(list.ToArray());
             }
             finally { s.Release(); }
         }
@@ -225,7 +225,7 @@ namespace AngryWasp.Helpers
             finally { s.Release(); }
         }
 
-        public async Task<List<K>> GetKeys()
+        public async Task<List<K>> CopyKeys()
         {
             await s.WaitAsync().ConfigureAwait(false);
 
@@ -236,7 +236,7 @@ namespace AngryWasp.Helpers
             finally { s.Release(); }
         }
 
-        public async Task<List<V>> GetValues()
+        public async Task<List<V>> CopyValues()
         {
             await s.WaitAsync().ConfigureAwait(false);
 
@@ -258,7 +258,7 @@ namespace AngryWasp.Helpers
             finally { s.Release(); }
         }
 
-        public async Task<HashSet<K>> GetKeyHashSet()
+        public async Task<HashSet<K>> GetKeysToHashSet()
         {
             await s.WaitAsync().ConfigureAwait(false);
 
@@ -269,7 +269,7 @@ namespace AngryWasp.Helpers
             finally { s.Release(); }
         }
 
-        public async Task<HashSet<V>> GetValueHashSet()
+        public async Task<HashSet<V>> GetValuesToHashSet()
         {
             await s.WaitAsync().ConfigureAwait(false);
 
