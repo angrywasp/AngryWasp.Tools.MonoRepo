@@ -258,7 +258,7 @@ namespace AngryWasp.Helpers
             finally { s.Release(); }
         }
 
-        public async Task<HashSet<K>> GetKeysToHashSet()
+        public async Task<HashSet<K>> CopyKeysToHashSet()
         {
             await s.WaitAsync().ConfigureAwait(false);
 
@@ -269,7 +269,7 @@ namespace AngryWasp.Helpers
             finally { s.Release(); }
         }
 
-        public async Task<HashSet<V>> GetValuesToHashSet()
+        public async Task<HashSet<V>> CopyValuesToHashSet()
         {
             await s.WaitAsync().ConfigureAwait(false);
 
