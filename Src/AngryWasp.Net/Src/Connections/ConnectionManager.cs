@@ -51,11 +51,11 @@ namespace AngryWasp.Net
 
         public static async Task<bool> HasConnection(ConnectionId peerId) => await connections.ContainsKey(peerId).ConfigureAwait(false);
 
-        public static async Task<HashSet<ConnectionId>> GetIdHashSet() => await connections.GetKeyHashSet().ConfigureAwait(false);
+        public static async Task<HashSet<ConnectionId>> GetIdHashSet() => await connections.CopyKeysToHashSet().ConfigureAwait(false);
 
         public static async Task<bool> HasConnection(string host)
         {
-            var connectionList = await connections.GetValues().ConfigureAwait(false);
+            var connectionList = await connections.CopyValues().ConfigureAwait(false);
             foreach (var c in connectionList)
             {
                 string compare = $"{c.Address.MapToIPv4().ToString()}:{c.Port.ToString()}";
@@ -70,7 +70,7 @@ namespace AngryWasp.Net
 
         public static async Task ForEach(Direction direction, Action<Connection> action)
         {
-            var connectionList = await connections.GetValues().ConfigureAwait(false);
+            var connectionList = await connections.CopyValues().ConfigureAwait(false);
             foreach (var c in connectionList)
                 if (direction.HasFlag(c.Direction))
                     action(c);
@@ -80,7 +80,7 @@ namespace AngryWasp.Net
         {
             List<byte> bytes = new List<byte>();
 
-            var connectionList = await connections.GetValues().ConfigureAwait(false);
+            var connectionList = await connections.CopyValues().ConfigureAwait(false);
 
             if (exclusions != null)
             {
@@ -108,7 +108,7 @@ namespace AngryWasp.Net
 
         public static async Task<Connection> GetRandomConnection()
         {
-            var connectionList = await connections.GetValues().ConfigureAwait(false);
+            var connectionList = await connections.CopyValues().ConfigureAwait(false);
 
             if (connectionList.Count == 0)
                 return null;

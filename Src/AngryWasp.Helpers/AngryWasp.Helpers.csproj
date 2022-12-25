@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets"/>
-    <Import Project="../AngryWasp.Build/AngryWasp.Build.Pack.targets"/>
-    <Import Project="../Nuget.Common.targets"/>
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Library.targets" />
+    <Import Project="../AngryWasp.Build/AngryWasp.Build.Pack.targets" />
+    <Import Project="../Nuget.Common.targets" />
     <PropertyGroup>
         <PackageId>AngryWasp.Helpers</PackageId>
         <PackageDescription>Various helper classes to make life a bit easier</PackageDescription>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="*"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     </ItemGroup>
 </Project>
