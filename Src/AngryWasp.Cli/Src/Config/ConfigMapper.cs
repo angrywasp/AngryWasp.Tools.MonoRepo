@@ -32,6 +32,8 @@ namespace AngryWasp.Cli.Config
 
         public static bool Process(Arguments arguments, T instance, string[,] extras)
         {
+            AngryWasp.Serializer.Serializer.Initialize();
+            
             classInstance = instance;
             extraList = extras;
 
